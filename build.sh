@@ -5,7 +5,14 @@ set -e
 #export PACKER_LOG=1
 
 NAME='trusty64'
-TYPE="virtualbox-iso"
+TYPE='virtualbox-iso'
+
+case expression in
+    saucy64|trusty64 )
+        NAME=$1 ;;
+    * )
+        NAME='trusty64' ;;
+esac
 
 rm -f packer_${TYPE}_virtualbox.box
 rm -rf output-${TYPE}
