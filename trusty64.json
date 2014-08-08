@@ -10,6 +10,7 @@
       
       "guest_os_type": "Ubuntu_64",
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": ".vbox_version",
       
       "ssh_password": "vagrant",
       "ssh_username": "vagrant",
@@ -28,17 +29,21 @@
       
       "boot_command": [
         "<esc><esc><enter><wait>",
-        "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
-        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us <wait>",
-        "hostname={{ .Name }} <wait>",
-        "fb=false debconf/frontend=noninteractive <wait>",
-        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA keyboard-configuration/variant=USA <wait>",
-        "console-setup/ask_detect=false <wait>",
-        "initrd=/install/initrd.gz -- <enter><wait>"
+        "/install/vmlinuz noapic ",
+        "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "auto=true ",
+        "locale=en_US.UTF-8 ",
+        "hostname={{ .Name }} ",
+        "fb=false ",
+        "debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP ",
+        "keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA ",
+        "console-setup/ask_detect=false ",
+        "initrd=/install/initrd.gz -- <enter>"
       ],
-      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
       
-      "virtualbox_version_file": ".vbox_version"
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now"
     }
   ],
   
