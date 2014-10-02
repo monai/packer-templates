@@ -3,12 +3,12 @@
 set -e
 
 # Update and upgrade dependencies
-sudo apt-get update -y -qq > /dev/null
-sudo apt-get upgrade -y -qq > /dev/null
-sudo apt-get autoremove -y -qq > /dev/null
+apt-get update -y -qq > /dev/null
+apt-get upgrade -y -qq > /dev/null
+apt-get autoremove -y -qq > /dev/null
 
 # Install necessary libraries for guest additions and Vagrant NFS Share
-sudo apt-get -y -qq install build-essential dkms nfs-common > /dev/null
+apt-get -y -qq install build-essential dkms nfs-common > /dev/null
 
 # NOPASSWD sudo for group "admin"
 groupadd -r admin
