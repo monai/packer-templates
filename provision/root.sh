@@ -17,7 +17,10 @@ cp /etc/sudoers /etc/sudoers.back
 sed -i -e '/Defaults\s\+env_reset/a Defaults\texempt_group=admin' /etc/sudoers
 sed -i -e 's/%admin ALL=(ALL) ALL/%admin ALL=NOPASSWD:ALL/g' /etc/sudoers
 
-# Install guest additions
+# Install Puppet
+apt-get -y -qq install puppet > /dev/null
+
+# Install Guest Additions
 VERSION="$(cat .vbox_version)"
 MPOINT="/mnt/cdrom"
 mkdir -p $MPOINT
